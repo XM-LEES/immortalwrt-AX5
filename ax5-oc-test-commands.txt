@@ -44,3 +44,16 @@ uci set cpufreq.cpufreq.governor0='schedutil'
 uci set cpufreq.cpufreq.maxfreq0='1800000'
 uci commit cpufreq
 /etc/init.d/cpufreq restart
+
+8) 4-core full-load stress test
+# Start
+for c in 0 1 2 3; do
+  taskset -c "$c" sh -c 'while :; do :; done' &
+  echo $! >> /tmp/cpu_burn4.pid
+done
+# Check
+cat /tmp/cpu_burn4.pid
+ps | grep -E 'while :; do :; done|PID'
+# Stop
+xargs -r kill < /tmp/cpu_burn4.pid
+rm -f /tmp/cpu_burn4.pid
