@@ -2,7 +2,7 @@
 
 /dts-v1/;
 
-#include "ipq6000-xiaomi.dtsi"
+#include "ipq6000-xiaomi-nowifi.dtsi"
 
 / {
 	model = "Redmi AX5";
@@ -10,7 +10,5 @@
 };
 
 &wifi {
-	status = "okay";
-	qcom,ath11k-fw-memory-mode = <1>;
-	qcom,ath11k-calibration-variant = "Redmi-AX5";
+	status = "disabled";
 };
