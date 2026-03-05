@@ -1,0 +1,10 @@
+openclash profile params (AX5 nowifi baseline)
+
+CONFIG_TARGET_qualcommax=y
+CONFIG_TARGET_qualcommax_ipq60xx=y
+CONFIG_TARGET_qualcommax_ipq60xx_DEVICE_redmi_ax5=y
+CONFIG_PACKAGE_luci-app-openclash=y
+
+Note:
+- This profile intentionally keeps only openclash as extra feature.
+- Build output suffix: openclash-20260305-g3f55ee8a

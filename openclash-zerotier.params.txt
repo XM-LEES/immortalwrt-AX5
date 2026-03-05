@@ -1,0 +1,12 @@
+openclash + zerotier profile params (AX5 nowifi baseline)
+
+CONFIG_TARGET_qualcommax=y
+CONFIG_TARGET_qualcommax_ipq60xx=y
+CONFIG_TARGET_qualcommax_ipq60xx_DEVICE_redmi_ax5=y
+CONFIG_PACKAGE_luci-app-openclash=y
+CONFIG_PACKAGE_luci-app-zerotier=y
+CONFIG_PACKAGE_zerotier=y
+
+Note:
+- This profile keeps openclash baseline and adds zerotier only.
+- Build output suffix: openclash-zerotier-20260305-g3f55ee8a
