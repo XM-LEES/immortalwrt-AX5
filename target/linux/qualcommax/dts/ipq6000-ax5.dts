@@ -14,8 +14,3 @@
 	qcom,ath11k-fw-memory-mode = <1>;
 	qcom,ath11k-calibration-variant = "Redmi-AX5";
 };
-
-/* AX5 256MB tune: align Q6 reservation with the smaller profile. */
-&q6_region {
-	reg = <0x0 0x4ab00000 0x0 0x3700000>;
-};
