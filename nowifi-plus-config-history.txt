@@ -41,6 +41,25 @@ Stage 1
 - Test result:
   - boot and basic function: passed
 
+Stage 2
+- Date: 2026-03-06
+- Profile name (suffix): openclash-zerotier-cpufreq-20260306-g0df6b2a6
+- Config delta (on top of Stage 1):
+  - CONFIG_PACKAGE_cpufreq=y
+  - CONFIG_PACKAGE_luci-app-cpufreq=y
+- Manifest check:
+  - includes: luci-app-openclash, luci-app-zerotier, zerotier, cpufreq, luci-app-cpufreq
+  - excludes: luci-app-ttyd, luci-theme-argon
+- Artifacts:
+  - immortalwrt-qualcommax-ipq60xx-redmi_ax5-initramfs-uImage_openclash-zerotier-cpufreq-20260306-g0df6b2a6.itb
+  - immortalwrt-qualcommax-ipq60xx-redmi_ax5-squashfs-factory_openclash-zerotier-cpufreq-20260306-g0df6b2a6.ubi
+  - immortalwrt-qualcommax-ipq60xx-redmi_ax5-squashfs-sysupgrade_openclash-zerotier-cpufreq-20260306-g0df6b2a6.bin
+  - immortalwrt-qualcommax-ipq60xx-redmi_ax5_openclash-zerotier-cpufreq-20260306-g0df6b2a6.manifest
+- Build log:
+  - /home/lmh/Desktop/openwrt/build_openclash-zerotier-cpufreq.log
+- Test result:
+  - boot and basic function: pending
+
 Next-stage record template
 - Date:
 - Profile suffix:
