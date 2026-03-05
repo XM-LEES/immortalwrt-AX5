@@ -79,6 +79,30 @@ Stage 3
 - Test result:
   - boot and basic function: pending
 
+Stage 4
+- Date: 2026-03-06
+- Profile name (suffix): openclash-zerotier-cpufreq-ttyd-zh-cn-20260306-g3b3bce4f
+- Config delta (on top of Stage 3):
+  - CONFIG_LUCI_LANG_zh_Hans=y
+  - CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
+  - CONFIG_PACKAGE_luci-i18n-firewall-zh-cn=y
+  - CONFIG_PACKAGE_luci-i18n-package-manager-zh-cn=y
+  - CONFIG_PACKAGE_luci-i18n-cpufreq-zh-cn=y
+  - CONFIG_PACKAGE_luci-i18n-ttyd-zh-cn=y
+  - CONFIG_PACKAGE_luci-i18n-zerotier-zh-cn=y
+- Manifest check:
+  - includes: luci-i18n-base-zh-cn, luci-i18n-firewall-zh-cn, luci-i18n-package-manager-zh-cn, luci-i18n-cpufreq-zh-cn, luci-i18n-ttyd-zh-cn, luci-i18n-zerotier-zh-cn
+  - keeps: luci-app-openclash, luci-app-zerotier, zerotier, cpufreq, luci-app-cpufreq, ttyd, luci-app-ttyd
+- Artifacts:
+  - immortalwrt-qualcommax-ipq60xx-redmi_ax5-initramfs-uImage_openclash-zerotier-cpufreq-ttyd-zh-cn-20260306-g3b3bce4f.itb
+  - immortalwrt-qualcommax-ipq60xx-redmi_ax5-squashfs-factory_openclash-zerotier-cpufreq-ttyd-zh-cn-20260306-g3b3bce4f.ubi
+  - immortalwrt-qualcommax-ipq60xx-redmi_ax5-squashfs-sysupgrade_openclash-zerotier-cpufreq-ttyd-zh-cn-20260306-g3b3bce4f.bin
+  - immortalwrt-qualcommax-ipq60xx-redmi_ax5_openclash-zerotier-cpufreq-ttyd-zh-cn-20260306-g3b3bce4f.manifest
+- Build log:
+  - /home/lmh/Desktop/openwrt/build_openclash-zerotier-cpufreq-ttyd-zh-cn.log
+- Test result:
+  - boot and basic function: pending
+
 Next-stage record template
 - Date:
 - Profile suffix:
