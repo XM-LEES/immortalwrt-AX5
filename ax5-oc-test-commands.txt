@@ -1,0 +1,46 @@
+AX5 OC Test Commands (nowifi-plus-oc)
+
+1) Verify available frequencies and current policy
+cat /sys/devices/system/cpu/cpufreq/policy0/scaling_available_frequencies
+cat /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+cat /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
+
+2) Switch to 1800 + performance (stress mode)
+uci set cpufreq.cpufreq.governor0='performance'
+uci set cpufreq.cpufreq.maxfreq0='1800000'
+uci commit cpufreq
+/etc/init.d/cpufreq restart
+
+3) Pin single-core full load on CPU0
+# Start
+(taskset -c 0 sh -c 'while :; do :; done' &) ; echo $! >/tmp/core0_burn.pid
+# Stop
+kill "$(cat /tmp/core0_burn.pid)" && rm -f /tmp/core0_burn.pid
+
+4) Real-time temperature/frequency/load monitor
+while true; do
+  t=$(cat /sys/class/thermal/thermal_zone0/temp); t=$((t/1000))
+  f=$(cat /sys/devices/system/cpu/cpufreq/policy0/scaling_cur_freq)
+  echo "$(date +%H:%M:%S) | temp=${t}C | freq=${f} | load=$(cat /proc/loadavg)"
+  sleep 1
+done
+
+5) NSS quick status
+lsmod | grep -E 'qca_nss_drv|qca_nss_dp|ecm'
+sysctl -a 2>/dev/null | grep -E '^dev\.nss\.(general\.redirect|ipv4cfg\.ipv4_accel_mode|ipv6cfg\.ipv6_accel_mode)'
+
+6) NSS/ECM real-time monitor
+mount | grep -q '/sys/kernel/debug' || mount -t debugfs none /sys/kernel/debug
+while true; do
+  echo "$(date +%H:%M:%S)"
+  echo -n "ECM: "; cat /sys/kernel/debug/ecm/ecm_db/connection_count_simple 2>/dev/null
+  echo -n "NSS_HWE: "; awk 'NR==6{print $2}' /sys/kernel/debug/qca-nss-drv/stats/cpu_load_ubi 2>/dev/null
+  echo "-----"
+  sleep 1
+done
+
+7) Restore daily mode (schedutil)
+uci set cpufreq.cpufreq.governor0='schedutil'
+uci set cpufreq.cpufreq.maxfreq0='1800000'
+uci commit cpufreq
+/etc/init.d/cpufreq restart
